@@ -1,0 +1,14 @@
+{
+  "name": "dentalai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "openai": "^4.47.1",
+    "uuid": "^9.0.1"
+  }
+}
