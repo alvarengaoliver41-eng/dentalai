@@ -26,13 +26,14 @@ dentalai/
 ## Deploy en Vercel
 
 1. **Importá el repo** en https://vercel.com/new.
-2. **Root Directory**: dejá vacío (raíz del repo). Vercel va a leer `vercel.json` para buildear el frontend y montar las functions de `api/`.
-3. **Environment Variables**: agregá `OPENAI_API_KEY` con tu clave de OpenAI. *No la commitees nunca al repo.*
-4. **Deploy**.
+2. **Root Directory**: vacío (raíz del repo). Vercel lee `vercel.json` para buildear el frontend y montar las functions de `api/`.
+3. **Storage (Upstash Redis)**: en el dashboard del proyecto → **Storage** → **Marketplace Database Providers** → **Upstash for Redis** → crear (free tier alcanza). Conectalo al proyecto y Vercel inyecta automáticamente `KV_REST_API_URL` y `KV_REST_API_TOKEN` (o `UPSTASH_REDIS_REST_*`).
+4. **Environment Variables**: agregá `OPENAI_API_KEY` con tu clave. *No la commitees nunca al repo.*
+5. **Deploy**.
 
-## Notas sobre persistencia en Vercel
+## Persistencia
 
-Vercel tiene filesystem read-only excepto `/tmp`, que es ephemeral por instancia. Los turnos y la config editada viven en `/tmp/dentalai/` y se reinician cada cold start (~5 min sin tráfico) o en cada deploy. Suficiente para una demo. Para persistencia real, migrar a Postgres/KV.
+Los turnos y la config se guardan en Upstash Redis (claves `dentalai:appointments` y `dentalai:config`). Persisten entre deploys e instancias. En la primera lectura, la config se inicializa desde `data/clinic-config.json`. Si no hay env vars de Redis, el storage cae a archivos locales (útil para dev).
 
 ## Desarrollo local
 
