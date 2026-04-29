@@ -2,11 +2,20 @@ import { useState, useEffect } from 'react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay } from 'date-fns';
 import { es } from 'date-fns/locale';
 
+const APPOINTMENTS_KEY = 'dentalai_appointments';
+
 const STATUS_LABELS = {
   active: { label: 'Activo', color: '#22c55e', bg: '#f0fdf4' },
   cancelled: { label: 'Cancelado', color: '#ef4444', bg: '#fef2f2' },
   completed: { label: 'Completado', color: '#94a3b8', bg: '#f8fafc' },
 };
+
+function loadFromStorage() {
+  try { return JSON.parse(localStorage.getItem(APPOINTMENTS_KEY) || '[]'); } catch { return []; }
+}
+function saveToStorage(data) {
+  localStorage.setItem(APPOINTMENTS_KEY, JSON.stringify(data));
+}
 
 export default function Appointments() {
   const [view, setView] = useState('list');
@@ -15,62 +24,46 @@ export default function Appointments() {
   const [cancellingId, setCancellingId] = useState(null);
 
   function load() {
-    fetch('/api/appointments')
-      .then(r => r.json())
-      .then(setAppointments)
-      .catch(() => {});
+    setAppointments(loadFromStorage());
   }
 
   useEffect(() => {
     load();
-    const interval = setInterval(load, 3000);
+    const interval = setInterval(load, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  async function cancelAppointment(apt) {
-    const confirmed = window.confirm(
-      `¿Seguro que querés cancelar el turno de ${apt.patientName} el ${apt.date} a las ${apt.time}?`
-    );
-    if (!confirmed) return;
+  function cancelAppointment(apt) {
+    if (!window.confirm(`¿Seguro que querés cancelar el turno de ${apt.patientName} el ${apt.date} a las ${apt.time}?`)) return;
     setCancellingId(apt.id);
-    try {
-      await fetch(`/api/appointments/${apt.id}/cancel`, { method: 'PATCH' });
-      load();
-    } finally {
-      setCancellingId(null);
-    }
+    const updated = loadFromStorage().map(a =>
+      a.id === apt.id ? { ...a, status: 'cancelled', cancelledAt: new Date().toISOString() } : a
+    );
+    saveToStorage(updated);
+    setAppointments(updated);
+    setCancellingId(null);
   }
 
-  async function deleteAppointment(apt) {
-    const confirmed = window.confirm(
-      `¿Eliminar definitivamente el turno de ${apt.patientName} el ${apt.date} a las ${apt.time}? Esta acción no se puede deshacer.`
-    );
-    if (!confirmed) return;
+  function deleteAppointment(apt) {
+    if (!window.confirm(`¿Eliminar definitivamente el turno de ${apt.patientName} el ${apt.date} a las ${apt.time}? Esta acción no se puede deshacer.`)) return;
     setCancellingId(apt.id);
-    try {
-      await fetch(`/api/appointments/${apt.id}`, { method: 'DELETE' });
-      load();
-    } finally {
-      setCancellingId(null);
-    }
+    const updated = loadFromStorage().filter(a => a.id !== apt.id);
+    saveToStorage(updated);
+    setAppointments(updated);
+    setCancellingId(null);
   }
 
-  async function clearHistory() {
-    const confirmed = window.confirm(
-      `¿Eliminar todo el historial de turnos cancelados o completados? Los turnos activos no se tocan. Esta acción no se puede deshacer.`
-    );
-    if (!confirmed) return;
-    await fetch('/api/appointments?scope=history', { method: 'DELETE' });
-    load();
+  function clearHistory() {
+    if (!window.confirm(`¿Eliminar el historial de turnos cancelados o completados? Los activos no se tocan.`)) return;
+    const updated = loadFromStorage().filter(a => a.status === 'active');
+    saveToStorage(updated);
+    setAppointments(updated);
   }
 
-  async function clearAll() {
-    const confirmed = window.confirm(
-      `⚠️ ¿Eliminar TODOS los turnos, incluyendo los activos? Esta acción no se puede deshacer.`
-    );
-    if (!confirmed) return;
-    await fetch('/api/appointments?scope=all', { method: 'DELETE' });
-    load();
+  function clearAll() {
+    if (!window.confirm(`⚠️ ¿Eliminar TODOS los turnos, incluyendo los activos? Esta acción no se puede deshacer.`)) return;
+    saveToStorage([]);
+    setAppointments([]);
   }
 
   const active = appointments.filter(a => a.status === 'active');

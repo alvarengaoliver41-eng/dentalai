@@ -2,6 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 
 const STORAGE_KEY = 'dentalai_chat_history';
 const STORAGE_LOG_KEY = 'dentalai_message_log';
+const APPOINTMENTS_KEY = 'dentalai_appointments';
+
+function loadAppointments() {
+  try { return JSON.parse(localStorage.getItem(APPOINTMENTS_KEY) || '[]'); } catch { return []; }
+}
+function saveAppointments(data) {
+  localStorage.setItem(APPOINTMENTS_KEY, JSON.stringify(data));
+}
 
 const SUGGESTIONS = [
   'Quiero sacar un turno para limpieza dental',
@@ -81,11 +89,13 @@ export default function Chat() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: newMessages.map(m => ({ role: m.role, content: m.content }))
+          messages: newMessages.map(m => ({ role: m.role, content: m.content })),
+          appointments: loadAppointments()
         })
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
+      if (Array.isArray(data.appointments)) saveAppointments(data.appointments);
       const assistantMsg = { role: 'assistant', content: data.response, ts: new Date().toISOString() };
       setMessages(prev => [...prev, assistantMsg]);
       logMessage(assistantMsg);
