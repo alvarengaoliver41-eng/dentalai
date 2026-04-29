@@ -109,14 +109,15 @@ a {
     padding-bottom: 0 !important;
   }
 
-  /* Nav en el flujo (no fixed), respeta safe-area del iPhone */
+  /* Nav en el flujo (no fixed), tamaño fijo para que nunca desaparezca */
   .dashboard-mobile-nav {
     display: flex !important;
-    position: static !important;
-    flex-shrink: 0 !important;
+    flex: 0 0 auto !important;
+    min-height: 58px !important;
+    align-items: center;
     background: white;
     border-top: 1px solid var(--slate-100);
-    padding: 6px 0 env(safe-area-inset-bottom, 8px);
+    padding-bottom: env(safe-area-inset-bottom, 6px);
     box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
   }
 

@@ -138,18 +138,6 @@ export default function Chat() {
             <div style={{ fontSize: 12, color: '#22c55e', fontWeight: 500 }}>● En línea</div>
           </div>
         </div>
-        <button
-          onClick={clearChat}
-          style={{
-            fontSize: 13, fontWeight: 600, color: '#ef4444',
-            padding: '6px 14px', borderRadius: 'var(--radius-sm)',
-            border: '1px solid #fecaca', background: 'transparent', transition: 'all 0.15s'
-          }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#fef2f2'; }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
-        >
-          Restablecer
-        </button>
       </div>
 
       {/* MENSAJES */}
@@ -216,9 +204,10 @@ export default function Chat() {
 
       {/* INPUT */}
       <div className="chat-input-area" style={{
-        display: 'flex', gap: 10, padding: '16px 32px 24px',
+        display: 'flex', flexDirection: 'column', gap: 8, padding: '12px 32px 20px',
         borderTop: '1px solid var(--slate-100)', background: 'white'
       }}>
+        <div style={{ display: 'flex', gap: 10 }}>
         <input
           ref={inputRef}
           value={input}
@@ -246,6 +235,20 @@ export default function Chat() {
           }}
         >
           Enviar
+        </button>
+        </div>
+        <button
+          onClick={clearChat}
+          style={{
+            alignSelf: 'center', fontSize: 12, fontWeight: 600,
+            color: 'var(--slate-400)', padding: '4px 12px',
+            borderRadius: 'var(--radius-sm)', border: '1px solid var(--slate-200)',
+            background: 'transparent', transition: 'all 0.15s'
+          }}
+          onMouseEnter={e => { e.currentTarget.style.color = '#ef4444'; e.currentTarget.style.borderColor = '#fecaca'; e.currentTarget.style.background = '#fef2f2'; }}
+          onMouseLeave={e => { e.currentTarget.style.color = 'var(--slate-400)'; e.currentTarget.style.borderColor = 'var(--slate-200)'; e.currentTarget.style.background = 'transparent'; }}
+        >
+          Restablecer conversación
         </button>
       </div>
     </div>
