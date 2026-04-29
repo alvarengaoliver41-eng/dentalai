@@ -8,7 +8,6 @@
     "dev": "vercel dev"
   },
   "dependencies": {
-    "@upstash/redis": "^1.37.0",
     "openai": "^4.47.1",
     "uuid": "^9.0.1"
   }

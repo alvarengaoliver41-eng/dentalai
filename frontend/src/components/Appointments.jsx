@@ -101,6 +101,22 @@ export default function Appointments() {
               {active.length} turno{active.length !== 1 ? 's' : ''} activo{active.length !== 1 ? 's' : ''}
             </p>
           </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          {appointments.length > 0 && (
+            <button
+              onClick={clearAll}
+              style={{
+                fontSize: 13, fontWeight: 600, color: '#ef4444',
+                padding: '8px 16px', borderRadius: 'var(--radius-sm)',
+                border: '1px solid #fecaca', background: 'transparent',
+                transition: 'all 0.15s'
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#fef2f2'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+            >
+              Restablecer
+            </button>
+          )}
           <div style={{
             display: 'inline-flex', background: 'var(--slate-100)',
             padding: 4, borderRadius: 'var(--radius-md)'
@@ -120,6 +136,7 @@ export default function Appointments() {
                 {v === 'list' ? '☰ Lista' : '📅 Calendario'}
               </button>
             ))}
+          </div>
           </div>
         </div>
 

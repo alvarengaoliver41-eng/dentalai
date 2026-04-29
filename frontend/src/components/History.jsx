@@ -26,15 +26,38 @@ export default function History() {
     return () => clearInterval(interval);
   }, []);
 
+  function resetHistory() {
+    if (!window.confirm('¿Limpiar todo el historial de mensajes?')) return;
+    localStorage.removeItem(STORAGE_LOG_KEY);
+    loadMessages();
+  }
+
   return (
     <div className="page-pad" style={{ padding: '32px 48px', maxWidth: 900, margin: '0 auto' }}>
       <div>
-        <h1 style={{
-          fontFamily: 'var(--font-display)', fontSize: 36, color: 'var(--slate-900)',
-          marginBottom: 6, letterSpacing: '-0.5px'
-        }}>
-          Historial de mensajes
-        </h1>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 6 }}>
+          <h1 style={{
+            fontFamily: 'var(--font-display)', fontSize: 36, color: 'var(--slate-900)',
+            letterSpacing: '-0.5px'
+          }}>
+            Historial de mensajes
+          </h1>
+          {messages.length > 0 && (
+            <button
+              onClick={resetHistory}
+              style={{
+                fontSize: 13, fontWeight: 600, color: '#ef4444',
+                padding: '8px 16px', borderRadius: 'var(--radius-sm)',
+                border: '1px solid #fecaca', background: 'transparent',
+                transition: 'all 0.15s', marginTop: 8
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#fef2f2'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+            >
+              Restablecer
+            </button>
+          )}
+        </div>
         <p style={{ color: 'var(--slate-500)', fontSize: 14, marginBottom: 32, fontWeight: 450 }}>
           Se actualiza automáticamente cada 3 segundos
         </p>

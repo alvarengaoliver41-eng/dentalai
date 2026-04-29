@@ -131,14 +131,14 @@ export default function Chat() {
         <button
           onClick={clearChat}
           style={{
-            fontSize: 13, color: 'var(--slate-400)', padding: '6px 12px',
-            borderRadius: 'var(--radius-sm)', border: '1px solid var(--slate-200)',
-            fontWeight: 500, transition: 'all 0.15s'
+            fontSize: 13, fontWeight: 600, color: '#ef4444',
+            padding: '6px 14px', borderRadius: 'var(--radius-sm)',
+            border: '1px solid #fecaca', background: 'transparent', transition: 'all 0.15s'
           }}
-          onMouseEnter={e => { e.target.style.color = 'var(--slate-600)'; e.target.style.borderColor = 'var(--slate-300)'; }}
-          onMouseLeave={e => { e.target.style.color = 'var(--slate-400)'; e.target.style.borderColor = 'var(--slate-200)'; }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#fef2f2'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
         >
-          Nueva conversación
+          Restablecer
         </button>
       </div>
 
