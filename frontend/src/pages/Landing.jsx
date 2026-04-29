@@ -6,7 +6,7 @@ export default function Landing() {
   return (
     <div style={{ minHeight: '100vh', background: 'white' }}>
       {/* NAV */}
-      <nav style={{
+      <nav className="landing-nav" style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         padding: '20px 48px', borderBottom: '1px solid var(--slate-100)',
         position: 'sticky', top: 0, background: 'rgba(255,255,255,0.85)',
@@ -31,7 +31,7 @@ export default function Landing() {
       </nav>
 
       {/* HERO */}
-      <section style={{
+      <section className="landing-hero" style={{
         padding: '96px 48px 64px', textAlign: 'center', maxWidth: 980, margin: '0 auto'
       }}>
         <div style={{
@@ -74,7 +74,7 @@ export default function Landing() {
       </section>
 
       {/* MOCK CHAT */}
-      <section style={{ padding: '0 48px 96px' }}>
+      <section className="landing-section-mock" style={{ padding: '0 48px 96px' }}>
         <div style={{
           maxWidth: 560, margin: '0 auto', background: 'white',
           borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-lg)',
@@ -125,7 +125,7 @@ export default function Landing() {
       </section>
 
       {/* BENEFICIOS */}
-      <section style={{ padding: '64px 48px', background: 'var(--slate-50)' }}>
+      <section className="landing-section-benefits" style={{ padding: '64px 48px', background: 'var(--slate-50)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 style={{
             fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4vw, 48px)',
@@ -168,7 +168,7 @@ export default function Landing() {
       </section>
 
       {/* CTA FINAL */}
-      <section style={{
+      <section className="landing-cta" style={{
         padding: '96px 48px',
         background: 'linear-gradient(135deg, var(--blue-700), var(--blue-900))',
         textAlign: 'center'
@@ -202,7 +202,7 @@ export default function Landing() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{
+      <footer className="landing-footer" style={{
         padding: '32px 48px', textAlign: 'center', fontSize: 13,
         color: 'var(--slate-400)', borderTop: '1px solid var(--slate-100)',
         background: 'white'

@@ -20,7 +20,7 @@ export default function Dashboard() {
   return (
     <div style={{ display: 'flex', height: '100vh', background: 'var(--slate-50)' }}>
       {/* SIDEBAR */}
-      <aside style={{
+      <aside className="dashboard-sidebar" style={{
         width: 260, background: 'white', borderRight: '1px solid var(--slate-100)',
         display: 'flex', flexDirection: 'column', padding: '24px 16px'
       }}>
@@ -71,7 +71,7 @@ export default function Dashboard() {
       </aside>
 
       {/* CONTENIDO */}
-      <main style={{ flex: 1, overflow: 'auto' }}>
+      <main className="dashboard-main" style={{ flex: 1, overflow: 'auto' }}>
         <Routes>
           <Route path="/" element={<Chat />} />
           <Route path="/historial" element={<History />} />
@@ -79,6 +79,28 @@ export default function Dashboard() {
           <Route path="/configuracion" element={<Settings />} />
         </Routes>
       </main>
+
+      {/* BOTTOM NAV (mobile only) */}
+      <nav className="dashboard-mobile-nav">
+        {tabs.map(tab => {
+          const active = activeTab.id === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => navigate(tab.path)}
+              style={{
+                flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
+                gap: 2, padding: '4px 0', fontSize: 10, fontWeight: 600,
+                color: active ? 'var(--blue-600)' : 'var(--slate-400)',
+                background: 'none', border: 'none', transition: 'color 0.15s'
+              }}
+            >
+              <span style={{ fontSize: 22 }}>{tab.icon}</span>
+              <span>{tab.label.split(' ')[0]}</span>
+            </button>
+          );
+        })}
+      </nav>
     </div>
   );
 }

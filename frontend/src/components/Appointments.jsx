@@ -84,7 +84,7 @@ export default function Appointments() {
   const startDay = getDay(monthStart);
 
   return (
-    <div style={{ padding: '32px 48px', maxWidth: 1100, margin: '0 auto' }}>
+    <div className="page-pad" style={{ padding: '32px 48px', maxWidth: 1100, margin: '0 auto' }}>
       <div>
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
@@ -308,7 +308,7 @@ function SectionBody({ items, muted, onCancel, onDelete, cancellingId }) {
         const status = STATUS_LABELS[apt.status] || STATUS_LABELS.active;
         const isBusy = cancellingId === apt.id;
         return (
-          <div key={apt.id} style={{
+          <div key={apt.id} className="apt-card" style={{
             display: 'flex', alignItems: 'center', gap: 16, padding: 16,
             background: 'white', borderRadius: 'var(--radius-md)',
             border: '1px solid var(--slate-100)',
@@ -329,7 +329,7 @@ function SectionBody({ items, muted, onCancel, onDelete, cancellingId }) {
                 {apt.time || ''}
               </div>
             </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
+            <div className="apt-card-info" style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--slate-900)', marginBottom: 4 }}>
                 {apt.patientName}
               </div>
@@ -339,7 +339,7 @@ function SectionBody({ items, muted, onCancel, onDelete, cancellingId }) {
                 {apt.patientEmail && ` · ${apt.patientEmail}`}
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div className="apt-card-actions" style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 'auto' }}>
               <div style={{
                 padding: '4px 10px', borderRadius: 999, fontSize: 12, fontWeight: 600,
                 background: status.bg, color: status.color

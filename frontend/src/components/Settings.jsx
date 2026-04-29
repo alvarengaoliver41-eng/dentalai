@@ -36,7 +36,7 @@ export default function Settings() {
   );
 
   return (
-    <div style={{ padding: '32px 48px', maxWidth: 760, margin: '0 auto' }}>
+    <div className="page-pad" style={{ padding: '32px 48px', maxWidth: 760, margin: '0 auto' }}>
       <div>
         <h1 style={{
           fontFamily: 'var(--font-display)', fontSize: 36, color: 'var(--slate-900)',

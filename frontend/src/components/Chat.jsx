@@ -111,7 +111,7 @@ export default function Chat() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* HEADER */}
-      <div style={{
+      <div className="chat-header" style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         padding: '20px 32px', borderBottom: '1px solid var(--slate-100)',
         background: 'white'
@@ -143,7 +143,7 @@ export default function Chat() {
       </div>
 
       {/* MENSAJES */}
-      <div style={{
+      <div className="chat-messages" style={{
         flex: 1, overflowY: 'auto', padding: '32px',
         display: 'flex', flexDirection: 'column', gap: 12
       }}>
@@ -152,7 +152,7 @@ export default function Chat() {
             display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
             animation: 'fadeIn 0.3s ease forwards'
           }}>
-            <div style={{
+            <div className="msg-bubble" style={{
               maxWidth: '70%', padding: '12px 16px',
               borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
               background: msg.role === 'user'
@@ -205,7 +205,7 @@ export default function Chat() {
       </div>
 
       {/* INPUT */}
-      <div style={{
+      <div className="chat-input-area" style={{
         display: 'flex', gap: 10, padding: '16px 32px 24px',
         borderTop: '1px solid var(--slate-100)', background: 'white'
       }}>
