@@ -18,7 +18,7 @@ export default function Dashboard() {
   const activeTab = tabs.find(t => t.path === location.pathname) || tabs[0];
 
   return (
-    <div style={{ display: 'flex', height: '100vh', background: 'var(--slate-50)' }}>
+    <div className="dashboard-root" style={{ display: 'flex', height: '100vh', background: 'var(--slate-50)' }}>
       {/* SIDEBAR */}
       <aside className="dashboard-sidebar" style={{
         width: 260, background: 'white', borderRight: '1px solid var(--slate-100)',

@@ -42,6 +42,7 @@ html, body, #root {
   background: var(--slate-50);
   color: var(--slate-800);
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
 }
 
 button {
@@ -49,10 +50,12 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  touch-action: manipulation;
 }
 
 input, textarea, select {
   font-family: var(--font-body);
+  touch-action: manipulation;
 }
 
 a {
@@ -92,29 +95,53 @@ a {
 .dashboard-mobile-nav { display: none; }
 
 @media (max-width: 768px) {
-  .dashboard-sidebar { display: none !important; }
+  /* Lock the page — no outer scroll, no bounce */
+  html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+  }
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
 
+  /* Dashboard: column flex so nav sits in the flow (no fixed positioning hack) */
+  .dashboard-root {
+    flex-direction: column !important;
+    height: 100dvh !important;
+    height: 100vh !important; /* fallback for older Safari */
+  }
+  .dashboard-sidebar { display: none !important; }
+  .dashboard-main {
+    flex: 1 !important;
+    min-height: 0 !important;   /* lets flex children shrink below content size */
+    overflow: auto !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Nav: static in the flex column, respects safe-area for iPhone home bar */
   .dashboard-mobile-nav {
     display: flex !important;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    position: static !important;
+    flex-shrink: 0 !important;
     background: white;
     border-top: 1px solid var(--slate-100);
-    padding: 6px 0 env(safe-area-inset-bottom, 6px);
-    z-index: 100;
+    padding: 6px 0 env(safe-area-inset-bottom, 8px);
     box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
   }
 
-  .dashboard-main { padding-bottom: 70px !important; }
-
+  /* Chat padding */
   .chat-header { padding: 12px 16px !important; }
   .chat-messages { padding: 16px !important; }
-  .chat-input-area { padding: 10px 12px 12px !important; }
-
+  .chat-input-area { padding: 10px 12px env(safe-area-inset-bottom, 12px) !important; }
   .msg-bubble { max-width: 86% !important; }
 
+  /* Page padding */
   .page-pad { padding: 20px 16px !important; }
 
+  /* Landing */
   .landing-nav { padding: 14px 20px !important; }
   .landing-hero { padding: 48px 20px 32px !important; }
   .landing-section-mock { padding: 0 20px 48px !important; }
@@ -122,6 +149,7 @@ a {
   .landing-cta { padding: 48px 20px !important; }
   .landing-footer { padding: 20px !important; }
 
+  /* Appointment cards */
   .apt-card { flex-wrap: wrap !important; gap: 10px !important; }
   .apt-card-info { font-size: 12px !important; }
   .apt-card-actions { margin-left: 0 !important; }
