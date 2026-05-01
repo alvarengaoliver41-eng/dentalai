@@ -21,7 +21,7 @@ export default function Landing() {
           style={{
             background: 'var(--blue-600)', color: 'white', padding: '10px 22px',
             borderRadius: 'var(--radius-md)', fontWeight: 600, fontSize: 14,
-            transition: 'all 0.2s', boxShadow: '0 2px 8px rgba(37,99,235,0.3)'
+            transition: 'all 0.2s', boxShadow: '0 2px 8px rgba(36,91,255,0.35)'
           }}
           onMouseEnter={e => e.target.style.background = 'var(--blue-700)'}
           onMouseLeave={e => e.target.style.background = 'var(--blue-600)'}
@@ -61,13 +61,13 @@ export default function Landing() {
         <button
           onClick={() => navigate('/panel')}
           style={{
-            background: 'linear-gradient(135deg, var(--blue-600), var(--blue-700))',
+            background: 'var(--brand-gradient)',
             color: 'white', padding: '16px 36px', borderRadius: 'var(--radius-lg)',
-            fontWeight: 700, fontSize: 17, boxShadow: '0 8px 24px rgba(37,99,235,0.35)',
+            fontWeight: 700, fontSize: 17, boxShadow: '0 8px 24px rgba(36,91,255,0.4)',
             transition: 'all 0.2s', letterSpacing: '-0.2px'
           }}
-          onMouseEnter={e => { e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 12px 32px rgba(37,99,235,0.45)'; }}
-          onMouseLeave={e => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 8px 24px rgba(37,99,235,0.35)'; }}
+          onMouseEnter={e => { e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 12px 32px rgba(36,91,255,0.55)'; }}
+          onMouseLeave={e => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 8px 24px rgba(36,91,255,0.4)'; }}
         >
           Conocer a Sarah →
         </button>
@@ -86,7 +86,7 @@ export default function Landing() {
           }}>
             <div style={{
               width: 40, height: 40, borderRadius: '50%',
-              background: 'linear-gradient(135deg, var(--blue-500), var(--blue-700))',
+              background: 'var(--brand-gradient)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 18, color: 'white'
             }}>🦷</div>
@@ -111,7 +111,7 @@ export default function Landing() {
                   maxWidth: '80%', padding: '12px 16px', borderRadius:
                     msg.from === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
                   background: msg.from === 'user'
-                    ? 'linear-gradient(135deg, var(--blue-600), var(--blue-700))'
+                    ? 'var(--brand-gradient)'
                     : 'var(--slate-100)',
                   color: msg.from === 'user' ? 'white' : 'var(--slate-800)',
                   fontSize: 14, lineHeight: 1.6, fontWeight: 450
@@ -170,7 +170,7 @@ export default function Landing() {
       {/* CTA FINAL */}
       <section className="landing-cta" style={{
         padding: '96px 48px',
-        background: 'linear-gradient(135deg, var(--blue-700), var(--blue-900))',
+        background: 'var(--brand-gradient)',
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
@@ -189,7 +189,7 @@ export default function Landing() {
           <button
             onClick={() => navigate('/panel')}
             style={{
-              background: 'white', color: 'var(--blue-700)', padding: '16px 36px',
+              background: 'white', color: 'var(--brand-royal)', padding: '16px 36px',
               borderRadius: 'var(--radius-md)', fontWeight: 700, fontSize: 16,
               boxShadow: '0 4px 16px rgba(0,0,0,0.15)', transition: 'all 0.2s'
             }}

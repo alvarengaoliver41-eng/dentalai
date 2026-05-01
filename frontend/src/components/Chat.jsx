@@ -129,7 +129,7 @@ export default function Chat() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
             width: 40, height: 40, borderRadius: '50%',
-            background: 'linear-gradient(135deg, var(--blue-500), var(--blue-700))',
+            background: 'var(--brand-gradient)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: 18, color: 'white'
           }}>🦷</div>
@@ -154,7 +154,7 @@ export default function Chat() {
               maxWidth: '70%', padding: '12px 16px',
               borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
               background: msg.role === 'user'
-                ? 'linear-gradient(135deg, var(--blue-600), var(--blue-700))'
+                ? 'var(--brand-gradient)'
                 : 'white',
               color: msg.role === 'user' ? 'white' : 'var(--slate-800)',
               fontSize: 14, lineHeight: 1.65,
@@ -227,7 +227,7 @@ export default function Chat() {
           onClick={() => sendMessage(input)}
           disabled={loading || !input.trim()}
           style={{
-            background: input.trim() && !loading ? 'var(--blue-600)' : 'var(--slate-200)',
+            background: input.trim() && !loading ? 'var(--brand-royal)' : 'var(--slate-200)',
             color: input.trim() && !loading ? 'white' : 'var(--slate-400)',
             padding: '12px 20px', borderRadius: 'var(--radius-md)',
             fontWeight: 600, fontSize: 14, transition: 'all 0.15s',

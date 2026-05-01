@@ -5,25 +5,36 @@
 }
 
 :root {
-  --blue-50: #eff6ff;
-  --blue-100: #dbeafe;
-  --blue-200: #bfdbfe;
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --blue-600: #2563eb;
-  --blue-700: #1d4ed8;
-  --blue-800: #1e40af;
-  --blue-900: #1e3a8a;
-  --slate-50: #f8fafc;
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-300: #cbd5e1;
+  /* Brand palette */
+  --brand-midnight: #0A1026;
+  --brand-royal: #245BFF;
+  --brand-cyan: #7FE7FF;
+  --brand-ivory: #F4F1EA;
+  --brand-black: #000000;
+  --brand-gradient: linear-gradient(135deg, #7FE7FF, #245BFF, #0A1026);
+
+  /* Blue scale → mapped to brand */
+  --blue-50: #eaefff;
+  --blue-100: #d1dcff;
+  --blue-200: #a3b8ff;
+  --blue-400: #7FE7FF;
+  --blue-500: #245BFF;
+  --blue-600: #245BFF;
+  --blue-700: #1a45e0;
+  --blue-800: #0A1026;
+  --blue-900: #0A1026;
+
+  /* Neutral scale — kept mostly as-is, ivory replaces the light bg */
+  --slate-50: #F4F1EA;
+  --slate-100: #edeae2;
+  --slate-200: #dddad2;
+  --slate-300: #c8c4bc;
   --slate-400: #94a3b8;
   --slate-500: #64748b;
   --slate-600: #475569;
   --slate-700: #334155;
   --slate-800: #1e293b;
-  --slate-900: #0f172a;
+  --slate-900: #0A1026;
   --white: #ffffff;
   --radius-sm: 8px;
   --radius-md: 12px;

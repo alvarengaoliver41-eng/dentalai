@@ -100,7 +100,7 @@ export default function Settings() {
             style={{
               background: 'var(--blue-600)', color: 'white', padding: '12px 28px',
               borderRadius: 'var(--radius-md)', fontWeight: 600, fontSize: 14,
-              transition: 'all 0.15s', boxShadow: '0 2px 8px rgba(37,99,235,0.3)',
+              transition: 'all 0.15s', boxShadow: '0 2px 8px rgba(36,91,255,0.35)',
               opacity: saving ? 0.6 : 1, cursor: saving ? 'wait' : 'pointer'
             }}
             onMouseEnter={e => { if (!saving) e.target.style.background = 'var(--blue-700)'; }}
