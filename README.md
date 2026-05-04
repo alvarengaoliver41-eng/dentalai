@@ -1,6 +1,6 @@
-# 🦷 DentalAI — Recepción virtual con Sarah
+# ✨ AgendaAI — Recepción virtual con Sarah
 
-Aplicación web para "Clínica Dental Sonrisa" con Sarah, una recepcionista virtual con IA (GPT-4o + tool calling).
+Aplicación web genérica para cualquier tipo de clínica (odontológica, estética, médica, etc.) con Sarah, una recepcionista virtual con IA (GPT-4o + tool calling). Adaptable a cualquier nicho que trabaje con turnos.
 
 ## Estructura
 

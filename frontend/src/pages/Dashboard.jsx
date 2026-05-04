@@ -32,9 +32,9 @@ export default function Dashboard() {
             borderBottom: '1px solid var(--slate-100)', marginBottom: 16
           }}
         >
-          <span style={{ fontSize: 24 }}>🦷</span>
+          <span style={{ fontSize: 24 }}>✨</span>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.5px', color: 'var(--slate-900)' }}>DentalAI</div>
+            <div style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.5px', color: 'var(--slate-900)' }}>AgendaAI</div>
             <div style={{ fontSize: 11, color: 'var(--slate-400)', fontWeight: 500 }}>Panel de administración</div>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function Dashboard() {
           padding: '12px', fontSize: 12, color: 'var(--slate-400)',
           borderTop: '1px solid var(--slate-100)', fontWeight: 500
         }}>
-          Clínica Dental Sonrisa
+          Panel de recepción
         </div>
       </aside>
 

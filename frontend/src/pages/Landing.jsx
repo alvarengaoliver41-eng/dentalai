@@ -13,8 +13,8 @@ export default function Landing() {
         backdropFilter: 'blur(12px)', zIndex: 10
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: 24 }}>🦷</span>
-          <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: '-0.5px', color: 'var(--slate-900)' }}>DentalAI</span>
+          <span style={{ fontSize: 24 }}>✨</span>
+          <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: '-0.5px', color: 'var(--slate-900)' }}>AgendaAI</span>
         </div>
         <button
           onClick={() => navigate('/panel')}
@@ -89,7 +89,7 @@ export default function Landing() {
               background: 'var(--brand-gradient)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 18, color: 'white'
-            }}>🦷</div>
+            }}>✨</div>
             <div>
               <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--slate-800)' }}>Sarah</div>
               <div style={{ fontSize: 12, color: '#22c55e', fontWeight: 500 }}>● En línea</div>
@@ -97,8 +97,8 @@ export default function Landing() {
           </div>
           <div style={{ padding: 24, background: 'white' }}>
             {[
-              { from: 'sarah', text: '¡Hola! 👋 Soy Sarah, la asistente virtual de Clínica Dental Sonrisa. ¿En qué te puedo ayudar hoy?' },
-              { from: 'user', text: 'Quiero sacar turno para una limpieza dental' },
+              { from: 'sarah', text: '¡Hola! 👋 Soy Sarah, la asistente virtual de tu clínica. ¿En qué te puedo ayudar hoy?' },
+              { from: 'user', text: 'Quiero sacar turno para una consulta' },
               { from: 'sarah', text: '¡Claro! ¿Para qué fecha te viene bien? Tenemos disponibilidad de lunes a viernes de 9 a 18 hs. 😊' },
               { from: 'user', text: 'El próximo martes estaría perfecto' },
               { from: 'sarah', text: 'Para el martes tengo varios horarios libres: 9:00, 10:30, 14:00 y 16:30. ¿Cuál preferís?' },
@@ -207,7 +207,7 @@ export default function Landing() {
         color: 'var(--slate-400)', borderTop: '1px solid var(--slate-100)',
         background: 'white'
       }}>
-        🦷 DentalAI — Recepción inteligente para clínicas dentales
+        ✨ AgendaAI — Recepción inteligente para tu clínica
       </footer>
     </div>
   );

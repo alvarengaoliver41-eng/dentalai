@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-const STORAGE_KEY = 'dentalai_chat_history';
-const STORAGE_LOG_KEY = 'dentalai_message_log';
-const APPOINTMENTS_KEY = 'dentalai_appointments';
+const STORAGE_KEY = 'agendaai_chat_history';
+const STORAGE_LOG_KEY = 'agendaai_message_log';
+const APPOINTMENTS_KEY = 'agendaai_appointments';
 
 function loadAppointments() {
   try { return JSON.parse(localStorage.getItem(APPOINTMENTS_KEY) || '[]'); } catch { return []; }
@@ -12,7 +12,7 @@ function saveAppointments(data) {
 }
 
 const SUGGESTIONS = [
-  'Quiero sacar un turno para limpieza dental',
+  'Quiero sacar un turno',
   '¿Qué horarios tienen disponibles?',
   'Necesito cancelar un turno',
   '¿Qué servicios ofrecen?',
@@ -57,7 +57,7 @@ export default function Chat() {
     if (messages.length === 0) {
       const greeting = {
         role: 'assistant',
-        content: '¡Hola! 👋 Soy Sarah, la recepcionista virtual de Clínica Dental Sonrisa. ¿En qué te puedo ayudar hoy?',
+        content: '¡Hola! 👋 Soy Sarah, la recepcionista virtual. ¿En qué te puedo ayudar hoy?',
         ts: new Date().toISOString()
       };
       setMessages([greeting]);
@@ -132,7 +132,7 @@ export default function Chat() {
             background: 'var(--brand-gradient)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: 18, color: 'white'
-          }}>🦷</div>
+          }}>✨</div>
           <div>
             <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--slate-900)' }}>Sarah</div>
             <div style={{ fontSize: 12, color: '#22c55e', fontWeight: 500 }}>● En línea</div>

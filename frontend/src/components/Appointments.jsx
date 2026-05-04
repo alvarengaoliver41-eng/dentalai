@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay } from 'date-fns';
 import { es } from 'date-fns/locale';
 
-const APPOINTMENTS_KEY = 'dentalai_appointments';
+const APPOINTMENTS_KEY = 'agendaai_appointments';
 
 const STATUS_LABELS = {
   active: { label: 'Activo', color: '#22c55e', bg: '#f0fdf4' },

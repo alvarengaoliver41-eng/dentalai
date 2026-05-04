@@ -1,17 +1,15 @@
 {
-  "name": "Clínica Dental Sonrisa",
-  "address": "Hernandarias, Av Los Perros 1234",
-  "phone": "+595974897627",
-  "email": "turnos@clinicasonrisa.com.py",
+  "name": "Mi Clínica",
+  "address": "Dirección de la clínica",
+  "phone": "+595974000000",
+  "email": "turnos@miclinica.com",
   "schedule": "Lunes a viernes de 9:00 a 18:00 hs",
   "services": [
-    "Limpieza dental",
-    "Blanqueamiento",
-    "Ortodoncia",
-    "Implantes",
-    "Extracciones",
-    "Radiografías",
-    "Consulta general"
+    "Consulta general",
+    "Primera visita",
+    "Control",
+    "Tratamiento",
+    "Seguimiento"
   ],
-  "description": "Somos una clínica dental moderna con más de 10 años de experiencia brindando atención de calidad a nuestros pacientes. Contamos con tecnología de última generación y un equipo de profesionales altamente capacitados."
+  "description": "Somos una clínica comprometida con la salud y bienestar de nuestros pacientes. Contamos con profesionales altamente capacitados para brindarte la mejor atención."
 }

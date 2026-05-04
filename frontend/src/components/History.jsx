@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const STORAGE_LOG_KEY = 'dentalai_message_log';
+const STORAGE_LOG_KEY = 'agendaai_message_log';
 
 function formatTime(ts) {
   const d = new Date(ts);
@@ -90,7 +90,7 @@ export default function History() {
                     : 'var(--slate-200)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16
                 }}>
-                  {msg.role === 'assistant' ? '🦷' : '👤'}
+                  {msg.role === 'assistant' ? '✨' : '👤'}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
